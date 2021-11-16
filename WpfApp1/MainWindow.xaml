@@ -7,7 +7,19 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox Name="TextBox" HorizontalAlignment="Left" Margin="347,217,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="TextBox" HorizontalAlignment="Left" Margin="347,231,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Slider x:Name="Slider" ValueChanged="Slider_ValueChanged_1" HorizontalAlignment="Left" Margin="347,265,0,0" VerticalAlignment="Top" Width="120"  Minimum="500"
+    Maximum="10000" TickFrequency="2000" IsSnapToTickEnabled="True" TickPlacement="BottomRight" />
+
+
+        <TextBlock Name="TextBlock1" Height="38" Width="50" TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top"
+            Text="{Binding ElementName=Slider, Path=Value, UpdateSourceTrigger=PropertyChanged}"
+    Margin="0,294,0,0"   
+   >
+        </TextBlock>
+        <Label Content="мс." HorizontalAlignment="Left" Margin="425,289,0,0" VerticalAlignment="Top"/>
+
 
     </Grid>
 </Window>
+
