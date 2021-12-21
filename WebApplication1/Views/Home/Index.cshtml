@@ -2,7 +2,39 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+
+@model WebApplication1.Models.Message
+
+@{var reflectProps = typeof(WebApplication1.Models.Message).GetProperties();}
+
+
+<h4>Message</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+           
+            @foreach (var propertyInfo in reflectProps)
+            {
+                Console.WriteLine(propertyInfo);
+
+                <div class="form-group">
+                    <label asp-for="@propertyInfo.Name" control-label">@propertyInfo.Name</label>
+                    <input asp-for=@propertyInfo.Name class="form-control" />
+                    <span asp-validation-for=@propertyInfo.Name class="text-danger"></span>
+                </div>
+
+            }
+            <input type="submit" />
+
+
+        </form>
+    </div>
 </div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
